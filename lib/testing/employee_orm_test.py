@@ -21,7 +21,7 @@ class TestEmployee:
     def test_creates_table(self):
         '''contains method "create_table()" that creates table "employees" if it does not exist.'''
 
-        Department.create_table()  # ensure Department table exists due to FK constraint
+        # ensure Department table exists due to FK constraint
         Employee.create_table()
         assert (CURSOR.execute("SELECT * FROM employees"))
 
@@ -69,9 +69,9 @@ class TestEmployee:
     def test_saves_employee(self):
         '''contains method "save()" that saves an Employee instance to the db and sets the instance id.'''
 
-        Department.create_table()
+        
         department = Department("Payroll", "Building A, 5th Floor")
-        department.save()  # tested in department_test.py
+         # tested in department_test.py
 
         Employee.create_table()
         employee = Employee("Sasha", "Manager", department.id)
@@ -89,9 +89,9 @@ class TestEmployee:
     def test_creates_employee(self):
         '''contains method "create()" that creates a new row in the db using the parameter data and returns an Employee instance.'''
 
-        Department.create_table()
+       
         department = Department("Payroll", "Building A, 5th Floor")
-        department.save()  # tested in department_test.py
+        # tested in department_test.py
 
         Employee.create_table()
         employee = Employee.create("Kai", "Web Developer", department.id)
@@ -107,11 +107,11 @@ class TestEmployee:
     def test_updates_row(self):
         '''contains a method "update()" that updates an instance's corresponding database record to match its new attribute values.'''
 
-        Department.create_table()
+        
         department1 = Department("Payroll", "Building A, 5th Floor")
-        department1.save()
+       
         department2 = Department("Human Resources", "Building C, 2nd Floor")
-        department2.save()
+        
 
         Employee.create_table()
 
@@ -139,9 +139,9 @@ class TestEmployee:
 
     def test_deletes_row(self):
         '''contains a method "delete()" that deletes the instance's corresponding database record'''
-        Department.create_table()
+        
         department = Department("Payroll", "Building A, 5th Floor")
-        department.save()
+        
 
         Employee.create_table()
 
@@ -170,9 +170,9 @@ class TestEmployee:
     def test_instance_from_db(self):
         '''contains method "instance_from_db()" that takes a db row and creates an Employee instance.'''
 
-        Department.create_table()
+        
         department = Department("Payroll", "Building A, 5th Floor")
-        department.save()  # tested in department_test.py
+        # tested in department_test.py
 
         Employee.create_table()
         sql = """
@@ -194,9 +194,9 @@ class TestEmployee:
     def test_gets_all(self):
         '''contains method "get_all()" that returns a list of Employee instances for every record in the db.'''
 
-        Department.create_table()
+        
         department = Department("Payroll", "Building A, 5th Floor")
-        department.save()
+        
 
         Employee.create_table()
         employee1 = Employee.create(
@@ -213,9 +213,9 @@ class TestEmployee:
     def test_finds_by_name(self):
         '''contains method "find_by_name()" that returns an Employee instance corresponding to the db row retrieved by name.'''
 
-        Department.create_table()
+        
         department = Department("Payroll", "Building A, 5th Floor")
-        department.save()
+        
         Employee.create_table()
         faker = Faker()
         employee1 = Employee.create(faker.name(), "Manager", department.id)
@@ -240,9 +240,9 @@ class TestEmployee:
     def test_finds_by_id(self):
         '''contains method "find_by_id()" that returns a Employee instance corresponding to its db row retrieved by id.'''
 
-        Department.create_table()
+       
         department = Department("Payroll", "Building A, 5th Floor")
-        department.save()
+        
         Employee.create_table()
         faker = Faker()
         employee1 = Employee.create(faker.name(), "Manager", department.id)
